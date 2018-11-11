@@ -1,0 +1,11 @@
+age,occupation,security,worthy
+old,clerk,sufficient,high
+old,clerk,sparse,high
+young,clerk,sparse,average
+average,clerk,sufficient,high
+young,self-employed,sparse,low
+young,self-employed,sufficient,low
+average,self-employed,sufficient,average
+average,self-employed,sparse,low
+old,self-employed,sparse,average
+old,self-employed,sufficient,high
