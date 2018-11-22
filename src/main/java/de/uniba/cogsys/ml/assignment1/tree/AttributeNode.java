@@ -1,6 +1,7 @@
 package de.uniba.cogsys.ml.assignment1.tree;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AttributeNode implements Node {
 
@@ -24,7 +25,13 @@ public class AttributeNode implements Node {
     public String toString() {
         return "{" +
                 "\"attribute\":\"" + attribute + '\"' +
-                ", \"children\":[" + children +
-                "]}";
+                ", \"values\":{" + mapToJson(children) +
+                "}}";
+    }
+
+    private static String mapToJson(Map<String, Node> map) {
+        return map.entrySet().stream()
+                  .map(entry -> "\"" + entry.getKey() + "\":" + entry.getValue().toString())
+                  .collect(Collectors.joining(","));
     }
 }

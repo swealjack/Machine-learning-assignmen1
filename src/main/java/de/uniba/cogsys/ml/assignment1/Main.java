@@ -55,12 +55,7 @@ public class Main {
         CsvDataSetParser parser = new CsvDataSetParser(separator);
         DataSet dataSet = parser.parseDataSet(datasetFile);
 
-        // test output
-        System.out.println(dataSet.getAttributes().stream().map(Attribute::getName).collect(Collectors.joining("\t")));
-        dataSet.getExamples().forEach(ex -> System.out.println(dataSet.getAttributes().stream().map(Attribute::getName).map(ex::getAttribute).collect(Collectors.joining("\t"))));
-
+        // output tree as JSON
         System.out.println(ID3.learn(dataSet, targetClass));
-
-        // TODO: actually run ID3 on the data set
     }
 }
