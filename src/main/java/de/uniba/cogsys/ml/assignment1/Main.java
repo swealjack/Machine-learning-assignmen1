@@ -59,6 +59,8 @@ public class Main {
         System.out.println(dataSet.getAttributes().stream().map(Attribute::getName).collect(Collectors.joining("\t")));
         dataSet.getExamples().forEach(ex -> System.out.println(dataSet.getAttributes().stream().map(Attribute::getName).map(ex::getAttribute).collect(Collectors.joining("\t"))));
 
+        System.out.println(ID3.learn(dataSet, targetClass));
+
         // TODO: actually run ID3 on the data set
     }
 }

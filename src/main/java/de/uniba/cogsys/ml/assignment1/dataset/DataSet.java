@@ -76,15 +76,15 @@ public final class DataSet {
      * @param   attribute   the {@link Attribute} to check the values of.
      * @return  whether all values of the given {@link Attribute} are the same.
      */
-    public boolean isEveryValueEqual(Attribute attribute) {
-        Optional<String> value = examples.stream().map(ex -> ex.getAttribute(attribute.getName())).findAny();
+    public boolean isEveryValueEqual(String attribute) {
+        Optional<String> value = examples.stream().map(ex -> ex.getAttribute(attribute)).findAny();
         if (!value.isPresent()) {
             // no examples in data set -> all examples have the same value
             return true;
         }
 
         for (Example example : examples) {
-            if (!example.getAttribute(attribute.getName()).equals(value.get())) {
+            if (!example.getAttribute(attribute).equals(value.get())) {
                 return false;
             }
         }
@@ -96,11 +96,11 @@ public final class DataSet {
      * @param   attribute   the {@link Attribute} to check.
      * @return  the most frequent value of the given {@link Attribute}.
      */
-    public String getMostFrequentValue(Attribute attribute) {
+    public String getMostFrequentValue(String attribute) {
         final HashMap<String, Integer> counts = new HashMap<>();
 
         for (Example example : examples) {
-            counts.compute(example.getAttribute(attribute.getName()), (value, count) -> {
+            counts.compute(example.getAttribute(attribute), (value, count) -> {
                 if (count == null) {
                     return 1;
                 } else {
