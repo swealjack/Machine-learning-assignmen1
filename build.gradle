@@ -11,6 +11,16 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'de.uniba.cogsys.ml.assignment1.Main'
+    }
+	
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
 dependencies {
     compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
 
